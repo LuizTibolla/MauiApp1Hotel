@@ -9,80 +9,107 @@
     <VerticalStackLayout VerticalOptions="CenterAndExpand"
                          Padding="10">
         <Label 
-            Text="Cálculo da Diária"
+            Text="Hotel Serra do Mar"
             FontFamily="Kalam"
-            FontSize="50"
-            TextColor="{StaticResource Primary}"/>
+            FontSize="45"
+            TextColor="Black"
+            HorizontalOptions="CenterAndExpand">
+            <Label.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="Red" Offset="0.0"/>
+                    <GradientStop Color="GreenYellow" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
 
-        <Frame>
-            <VerticalStackLayout>
-                <Grid RowDefinitions="Auto, Auto"
-                      ColumnDefinitions="*, *, 2*">
+        <Frame BackgroundColor="DarkGrey" BorderColor="Transparent">
+            <StackLayout>
+                <Label 
+                    Text="Cálculo da Diária"
+                    TextDecorations="Underline"
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    TextColor="{StaticResource Primary}"
+                    HorizontalOptions="CenterAndExpand"/>
+                <VerticalStackLayout>
+                    <Grid RowDefinitions="Auto, Auto"
+                          ColumnDefinitions="*, *, 2*">
 
-                    <Label Grid.Row="0" Grid.Column="0"
-                           Text="Adultos:"/>
+                        <Label Grid.Row="0" Grid.Column="0"
+                               Text="Adultos:"/>
 
-                    <Label Grid.Row="0" Grid.Column="1"
-                           TextColor="{StaticResource Primary}"
-                           Text="{Binding Value}"
-                           BindingContext="{x:Reference stp_adultos}"/>
+                        <Label Grid.Row="0" Grid.Column="1"
+                               TextColor="{StaticResource Primary}"
+                               Text="{Binding Value}"
+                               BindingContext="{x:Reference stp_adultos}"/>
 
-                    <Stepper Grid.Row="0" Grid.Column="2"
-                             x:Name="stp_adultos"
-                             Minimum="0"
-                             Maximum="10"
-                             Increment="1"/>
+                        <Stepper Grid.Row="0" Grid.Column="2"
+                                 x:Name="stp_adultos"
+                                 Minimum="0"
+                                 Maximum="10"
+                                 Increment="1"/>
 
-                    <Label Grid.Row="1" Grid.Column="0"
-                           Text="Crianças:"/>
+                        <Label Grid.Row="1" Grid.Column="0"
+                               Text="Crianças:"/>
 
-                    <Label Grid.Row="1" Grid.Column="1"
-                           TextColor="{StaticResource Primary}"
-                           Text="{Binding Value}"
-                           BindingContext="{x:Reference stp_criancas}"/>
+                        <Label Grid.Row="1" Grid.Column="1"
+                               TextColor="{StaticResource Primary}"
+                               Text="{Binding Value}"
+                               BindingContext="{x:Reference stp_criancas}"/>
 
-                    <Stepper Grid.Row="2" Grid.Column="2"
-                             x:Name="stp_criancas"
-                             Minimum="0"
-                             Maximum="10"
-                             Increment="1"/>
-                </Grid>
+                        <Stepper Grid.Row="2" Grid.Column="2"
+                                 x:Name="stp_criancas"
+                                 Minimum="0"
+                                 Maximum="10"
+                                 Increment="1"/>
+                    </Grid>
 
-                <Label Text="Escolha sua Suite"/>
+                    <Label Text="Escolha sua Suite"/>
 
-                <Picker x:Name="pck_quarto"
-                        Title="Escolha sua acomodação"/>
+                    <Picker x:Name="pck_quarto"
+                            Title="Escolha sua acomodação"
+                            ItemDisplayBinding="{Binding Descricao}"/>
 
-                <Frame Padding="10"
-                       Margin="10">
-                    <VerticalStackLayout>
-                        <Label Text="Periodo da estadia"/>
+                    <Frame Padding="10"
+                           Margin="10">
+                        <VerticalStackLayout>
+                            <Label Text="Periodo da estadia"/>
                         
-                        <HorizontalStackLayout>
-                            <Label Text="Check-in:"/>
-                            <DatePicker x:Name="dtpck_checkin"
-                                        Format="dd/MM/yyyy"/>
-                        </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Check-in:"
+                                       VerticalOptions="Center"
+                                       Padding="15"/>
+                                <DatePicker x:Name="dtpck_checkin"
+                                            DateSelected="dtpck_checkin_DateSelected"
+                                            Format="dd/MM/yyyy"
+                                            Margin="5"/>
+                            </HorizontalStackLayout>
                         
-                        <HorizontalStackLayout>
-                            <Label Text="Check-out:"/>
-                            <DatePicker x:Name="dtpck_checkout"
-                                        Format="dd/MM/yyyy"/>
-                        </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Check-out:"
+                                       VerticalOptions="Center"
+                                       Padding="10"/>
+                                <DatePicker x:Name="dtpck_checkout"
+                                            Format="dd/MM/yyyy"
+                                            Margin="5"/>
+                            </HorizontalStackLayout>
 
-                    </VerticalStackLayout>
-                </Frame>
-                <StackLayout Spacing="10">
-                    <Button Text="Avançar"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <StackLayout Spacing="10">
+                        <Button Text="Avançar" 
+                                Clicked="Button_Clicked_1"
+                                HorizontalOptions="Center"/>
 
-                    <Button Text="Sobre"
-                            Clicked="Button_Clicked"
-                            Background="Transparent"
-                            TextColor="{StaticResource Primary}"
-                            FontSize="12"/>
-                </StackLayout>
-
-            </VerticalStackLayout>
+                        <Button Text="Sobre"
+                                Clicked="Button_Clicked"
+                                Background="Transparent"
+                                TextColor="{StaticResource Primary}"
+                                FontSize="12"
+                                HorizontalOptions="Center"/>
+                    </StackLayout>
+                </VerticalStackLayout>
+            </StackLayout>
         </Frame>
     </VerticalStackLayout>
 </ContentPage>
